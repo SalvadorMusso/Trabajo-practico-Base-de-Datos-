@@ -1,16 +1,16 @@
+
 -- Se crea la base de datos
 CREATE DATABASE calzados_sa; 
 
 -- Tabulacion de entidades maestras 
-CREATE TABLE Talle(
+CREATE TABLE Talle( 
 	Num DECIMAL(4, 1) PRIMARY KEY -- Permite talles como 37,5
 );
 
 CREATE TABLE Zapato(
 	IdZapato SERIAL PRIMARY KEY,
 	Modelo VARCHAR(100) NOT NULL,
-	Color VARCHAR(50) NOT NULL, 
-	PrecioZap DECIMAL(12, 2) NOT NULL,
+	Color VARCHAR(50) NOT NULL,
 	CONSTRAINT chk_precio_limite CHECK (PrecioZap > 0 AND PrecioZap < 200000),
 	CONSTRAINT uq_modelo_color UNIQUE (Modelo, Color)
 );
@@ -47,7 +47,9 @@ CREATE TABLE DisponibleEn (
     IdZapato INT NOT NULL,
     Num DECIMAL(4, 1) NOT NULL,
     Cant INT NOT NULL DEFAULT 0,
+	Precio DECIMAL(12, 2) NOT NULL,
     CONSTRAINT chk_cant_positiva CHECK (Cant >= 0),
+	CONSTRAINT chk_precio_limite CHECK (Precio > 0 AND Precio < 200000),
     PRIMARY KEY (IdZapato, Num),
     FOREIGN KEY (IdZapato) REFERENCES Zapato(IdZapato) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (Num) REFERENCES Talle(Num) ON DELETE CASCADE ON UPDATE CASCADE
@@ -108,7 +110,6 @@ CREATE TABLE Franco (
 CREATE TABLE Factura (
     IdFactura SERIAL PRIMARY KEY,
     Fecha DATE NOT NULL,
-    Monto DECIMAL(12, 2) NOT NULL CHECK (Monto >= 0),
     DescuentoAplicado DECIMAL(5, 2) NOT NULL,
     DniCliente VARCHAR(15) NOT NULL,
     NumVend INT NOT NULL,

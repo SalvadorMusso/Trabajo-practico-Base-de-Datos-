@@ -1,3 +1,6 @@
+
+
+
 -- Talles disponibles
 INSERT INTO Talle (Num) VALUES 
 (38.0), (39.0), (40.0), (41.0), (42.0);
@@ -7,10 +10,10 @@ INSERT INTO DiaSemana (Dia) VALUES
 ('Lunes'), ('Martes'), ('Miércoles'), ('Jueves'), ('Viernes'), ('Sábado');
 
 -- Zapatos (El IdZapato se genera automáticamente como 1, 2, 3...)
-INSERT INTO Zapato (Modelo, Color, PrecioZap) VALUES 
-('Urbano Clasico', 'Negro', 45000.00),
-('Deportivo Running', 'Blanco', 85500.50),
-('Bota Cuero', 'Marrón', 150000.00);
+INSERT INTO Zapato (Modelo, Color) VALUES 
+('Urbano Clasico', 'Negro'),
+('Deportivo Running', 'Blanco'),
+('Bota Cuero', 'Marrón');
 
 -- Proveedores (IdProveedor 1, 2...)
 INSERT INTO Proveedor (Cuit, RazSoci, Direccion, TelefonoFijo) VALUES 
@@ -29,11 +32,11 @@ INSERT INTO Vendedor (Dni, Direccion, Nombre, Apellido) VALUES
 ('32777666', 'Sobremonte 450', 'Martin', 'Rodriguez');
 
 -- Stock por número (IdZapato, Num)
-INSERT INTO DisponibleEn (IdZapato, Num, Cant) VALUES 
-(1, 39.0, 50),
-(1, 40.0, 30),
-(2, 41.0, 15),
-(3, 42.0, 10);
+INSERT INTO DisponibleEn (IdZapato, Num, Cant, Precio) VALUES 
+(1, 39.0, 50, 150000.00),
+(1, 40.0, 30, 85500.50),
+(2, 41.0, 15, 45000.00),
+(3, 42.0, 10, 32000.00);
 
 -- Celulares de proveedores
 INSERT INTO MultEvCelus (IdProveedor, Celus) VALUES 
@@ -69,11 +72,11 @@ INSERT INTO Franco (Observaciones, Fecha, NumVend) VALUES
 ('Día compensatorio', '2026-01-15', 2);
 
 -- Encabezado de Facturas (IdFactura 1 y 2 generados automáticamente)
-INSERT INTO Factura (Fecha, Monto, DescuentoAplicado, DniCliente, NumVend) VALUES 
-('2026-10-20', 45000.00, 0.00, '35111222', 1),
-('2026-10-21', 127500.00, 15.00, '20555666', 2);
+INSERT INTO Factura (Fecha, DescuentoAplicado, DniCliente, NumVend) VALUES 
+('2026-10-20', 0.00, '35111222', 1),
+('2026-10-21', 15.00, '20555666', 2);
 
 -- Detalle de las facturas (Los zapatos y números deben existir en DisponibleEn)
 INSERT INTO Facturado (IdFactura, IdZapato, Num, Precio, Cantidad) VALUES 
-(1, 1, 39.0, 45000.00, 1),
-(2, 3, 42.0, 150000.00, 1);
+(1, 1, 39.0, 150000.00, 1),
+(2, 3, 42.0, 170000.00, 1);

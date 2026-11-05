@@ -5,7 +5,7 @@ public class Zapateria {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opcion = -1;
-
+ 
         while (opcion != 0) {
             System.out.println("=== GESTIÓN DE ZAPATERÍA CALZADOS S.A. ===");
             System.out.println("1. Listar proveedores");

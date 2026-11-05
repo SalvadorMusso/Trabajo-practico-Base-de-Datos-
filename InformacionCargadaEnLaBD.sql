@@ -1,6 +1,4 @@
 
-
-
 -- Talles disponibles
 INSERT INTO Talle (Num) VALUES 
 (38.0), (39.0), (40.0), (41.0), (42.0);
@@ -13,7 +11,8 @@ INSERT INTO DiaSemana (Dia) VALUES
 INSERT INTO Zapato (Modelo, Color) VALUES 
 ('Urbano Clasico', 'Negro'),
 ('Deportivo Running', 'Blanco'),
-('Bota Cuero', 'Marrón');
+('Bota Cuero', 'Marrón'),
+('Botita Vans', 'Negro');
 
 -- Proveedores (IdProveedor 1, 2...)
 INSERT INTO Proveedor (Cuit, RazSoci, Direccion, TelefonoFijo) VALUES 
@@ -28,15 +27,18 @@ INSERT INTO Cliente (DniCliente, Direccion, Nombre, Apellido) VALUES
 
 -- Vendedores (NumVend 1, 2...)
 INSERT INTO Vendedor (Dni, Direccion, Nombre, Apellido) VALUES 
+('32777666', 'Sobremonte 450', 'Martin', 'Rodriguez'),
 ('30999888', 'Castelli 300', 'Julieta', 'Fernandez'),
-('32777666', 'Sobremonte 450', 'Martin', 'Rodriguez');
+('40111222', 'Ruta 8', 'Salvador', 'Musso');
+	
 
 -- Stock por número (IdZapato, Num)
 INSERT INTO DisponibleEn (IdZapato, Num, Cant, Precio) VALUES 
 (1, 39.0, 50, 150000.00),
 (1, 40.0, 30, 85500.50),
 (2, 41.0, 15, 45000.00),
-(3, 42.0, 10, 32000.00);
+(3, 42.0, 10, 32000.00),
+(3, 38.0, 0 , 31000.00);
 
 -- Celulares de proveedores
 INSERT INTO MultEvCelus (IdProveedor, Celus) VALUES 
@@ -74,9 +76,11 @@ INSERT INTO Franco (Observaciones, Fecha, NumVend) VALUES
 -- Encabezado de Facturas (IdFactura 1 y 2 generados automáticamente)
 INSERT INTO Factura (Fecha, DescuentoAplicado, DniCliente, NumVend) VALUES 
 ('2026-10-20', 0.00, '35111222', 1),
-('2026-10-21', 15.00, '20555666', 2);
+('2026-10-21', 15.00, '20555666', 2),
+('2025-10-22', 15.00, '28333444', 3);
 
 -- Detalle de las facturas (Los zapatos y números deben existir en DisponibleEn)
 INSERT INTO Facturado (IdFactura, IdZapato, Num, Precio, Cantidad) VALUES 
 (1, 1, 39.0, 150000.00, 1),
-(2, 3, 42.0, 170000.00, 1);
+(2, 3, 42.0, 170000.00, 1),
+(3, 2, 41.0, 45000.00, 3);

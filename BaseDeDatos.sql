@@ -1,6 +1,6 @@
 
 -- Se crea la base de datos
-CREATE DATABASE calzados_sa; 
+-- CREATE DATABASE calzados_sa; 
 
 -- Tabulacion de entidades maestras 
 CREATE TABLE Talle( 
@@ -11,7 +11,6 @@ CREATE TABLE Zapato(
 	IdZapato SERIAL PRIMARY KEY,
 	Modelo VARCHAR(100) NOT NULL,
 	Color VARCHAR(50) NOT NULL,
-	CONSTRAINT chk_precio_limite CHECK (PrecioZap > 0 AND PrecioZap < 200000),
 	CONSTRAINT uq_modelo_color UNIQUE (Modelo, Color)
 );
 
@@ -39,7 +38,8 @@ CREATE TABLE Vendedor (
 );
 
 CREATE TABLE DiaSemana (
-    Dia VARCHAR(9) PRIMARY KEY 
+    Dia VARCHAR(9) PRIMARY KEY CHECK (DiaSemana IN ('Lunes', 'Martes', 'Miercoles', 
+	'Jueves', 'Viernes', 'Sabado', 'Domingo'))
 );
 
 -- Relación N:M entre Zapato y Talle

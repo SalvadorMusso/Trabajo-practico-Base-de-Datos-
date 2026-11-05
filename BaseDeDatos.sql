@@ -38,8 +38,7 @@ CREATE TABLE Vendedor (
 );
 
 CREATE TABLE DiaSemana (
-    Dia VARCHAR(9) PRIMARY KEY CHECK (DiaSemana IN ('Lunes', 'Martes', 'Miercoles', 
-	'Jueves', 'Viernes', 'Sabado', 'Domingo'))
+    Dia VARCHAR(9) PRIMARY KEY
 );
 
 -- Relación N:M entre Zapato y Talle

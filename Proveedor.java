@@ -9,7 +9,7 @@ public class Proveedor {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/calzados_sa";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "tu_contraseña_aqui"; // Recordá poner tu clave
+    private static final String PASSWORD = "2206"; 
 
     public static Connection conectar() {
         Connection conn = null;
@@ -17,17 +17,17 @@ public class Proveedor {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             System.err.println("Error de conexión: " + e.getMessage());
-        }
+        }       
         return conn;
     }
 
-    // 1. Insertar proveedor
+     // 1. Insertar proveedor
     public static void insertar(String cuit, String razonSocial, String direccion, String telefono, String celular) {
-        // Consultas ajustadas a los nombres reales del script BaseDeDatos.sql
+        
         String sqlProv = "INSERT INTO Proveedor (Cuit, RazSoci, Direccion, TelefonoFijo) VALUES (?, ?, ?, ?)";
         String sqlCel = "INSERT INTO MultEvCelus (IdProveedor, Celus) VALUES (?, ?)";
 
-        // Statement.RETURN_GENERATED_KEYS nos permite recuperar el IdProveedor automático
+     
         try (Connection conn = conectar(); 
              PreparedStatement pstmtProv = conn.prepareStatement(sqlProv, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -39,7 +39,7 @@ public class Proveedor {
 
             // Recuperamos el ID generado para guardarle el celular
             try (ResultSet rs = pstmtProv.getGeneratedKeys()) {
-                if (rs.next()) {
+                if (rs.next()) {    
                     int idProveedor = rs.getInt(1);
 
                     try (PreparedStatement pstmtCel = conn.prepareStatement(sqlCel)) {

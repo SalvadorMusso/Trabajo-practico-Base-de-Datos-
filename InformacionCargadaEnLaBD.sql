@@ -71,7 +71,7 @@ INSERT INTO CumpleHorar (Dia, NumVend, HoraIngreso, HoraSalida) VALUES
 -- Francos de los vendedores
 INSERT INTO Franco (Observaciones, Fecha, NumVend) VALUES 
 ('Descanso semanal', '2026-01-10', 1),
-('Día compensatorio', '2026-01-15', 2);
+('Día compensatorio', '2026-02-15', 2);
 
 -- Encabezado de Facturas (IdFactura 1 y 2 generados automáticamente)
 INSERT INTO Factura (Fecha, DescuentoAplicado, DniCliente, NumVend) VALUES 
@@ -81,6 +81,6 @@ INSERT INTO Factura (Fecha, DescuentoAplicado, DniCliente, NumVend) VALUES
 
 -- Detalle de las facturas (Los zapatos y números deben existir en DisponibleEn)
 INSERT INTO Facturado (IdFactura, IdZapato, Num, Precio, Cantidad) VALUES 
-(1, 1, 39.0, 150000.00, 1),
+(1, 1, 39.0, 150000.00, 5),
 (2, 3, 42.0, 170000.00, 1),
 (3, 2, 41.0, 45000.00, 3);

@@ -2,13 +2,10 @@
 -- Se crea la base de datos
 -- CREATE DATABASE calzados_sa; 
 
-
 -- REINICIO 
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
-
--- CREATE TABLE Talle ( ...
 -- Tabulacion de entidades maestras 
 CREATE TABLE Talle( 
 	Num DECIMAL(4, 1) PRIMARY KEY -- Permite talles como 37,5
@@ -136,6 +133,7 @@ CREATE TABLE Facturado (
     -- Referencia a DisponibleEn asegura que se venda un modelo y talle que exista en el catálogo
     FOREIGN KEY (IdZapato, Num) REFERENCES DisponibleEn(IdZapato, Num) ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
 
 --Crea la tabla auditoria 
 CREATE TABLE AuditoriaPrecioZapato (

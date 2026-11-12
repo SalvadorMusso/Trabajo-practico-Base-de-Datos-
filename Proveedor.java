@@ -9,7 +9,7 @@ public class Proveedor {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/calzados_sa";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "2206"; 
+    private static final String PASSWORD = ""; 
 
     public static Connection conectar() {
         Connection conn = null;
